@@ -1,0 +1,41 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+
+    {% include 'AppBundle:default/parts:navigation_top.html.twig' %}
+    {% include 'AppBundle:default/parts:form_create.html.twig' %}
+
+    <div class="container">
+        <div class="messages">
+            {% for message in messages %}
+                <div class="row text-center message">
+                    <div class="col-md-12 text-center message-title">
+                        <strong>{{ message.title }}</strong>
+                    </div>
+                    <div class="col-md-12 text-center message-image">
+                        <img src="{{ message.image }}" />
+                    </div>
+
+                {% if not loop.last %}
+                    <hr class="fancy-line" />
+                {% endif %}
+                </div>
+                {% if loop.last %}
+                    <div class="paginator">
+                        <a class="next" href="?page={{ page + 1 }}"></a>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="alert-info">No messages found</div>
+            {% endfor %}
+
+        </div>
+
+
+
+        <hr>
+        <footer class="text-right">
+            <p>&copy; ImageForum {{ 'now' | date('Y') }}</p>
+        </footer>
+    </div> <!-- /container -->
+{% endblock %}

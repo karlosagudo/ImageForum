@@ -1,0 +1,10 @@
+services:
+    app_bundle.form.image_message_type:
+        class: AppBundle\Form\ImageMessageType
+        calls:
+            - ["setParameters",["%image_upload%"]]
+        tags:
+            - { name: form.type }
+    app_bundle.image_uploader:
+        class: AppBundle\Services\FileUploader
+        arguments: ['%image_upload%']
