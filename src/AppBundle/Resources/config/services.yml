@@ -8,3 +8,11 @@ services:
     app_bundle.image_uploader:
         class: AppBundle\Services\FileUploader
         arguments: ['%image_upload%']
+
+    app_bundle.counter_pages:
+        class: AppBundle\Services\VisitsCounter
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app_bundle.export_excel:
+        class: AppBundle\Services\ExcelExport
+        arguments: ['@phpexcel']
